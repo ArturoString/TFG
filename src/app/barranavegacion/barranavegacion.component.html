@@ -1,1 +1,44 @@
-<p>barranavegacion works!</p>
+<nav class="navbar navbar-expand-lg navbar-light barraNavegacion">
+  <a class="navbar-brand" href="#">Herbia</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="exteriorDropdown" role="button" data-toggle="Exterior" aria-haspopup="true" aria-expanded="false">
+          Exterior
+        </a>
+        <div class="dropdown-menu" aria-labelledby="exteriorDropdown">
+          <a class="dropdown-item" href="#">Plantas de huerto</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="interiorDropdown" role="button" data-toggle="Interior" aria-haspopup="true" aria-expanded="false">
+          Interior
+        </a>
+        <div class="dropdown-menu" aria-labelledby="interiorDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Quienes somos</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav my-2 my-lg-0">
+      <li class="active">
+        <a class="nav-link" href="#">Inicio sesión</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Regístrate</a>
+      </li>
+    </ul>
+  </div>
+</nav>

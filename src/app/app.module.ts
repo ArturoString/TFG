@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import {Routes} from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { BarranavegacionComponent } from './barranavegacion/barranavegacion.component';
+import { RegistroComponent } from './registro/registro.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { BarranavegacionComponent } from './barranavegacion/barranavegacion.comp
     AppComponent,
     LoginComponent,
     FooterComponent,
-    BarranavegacionComponent
+    BarranavegacionComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule
