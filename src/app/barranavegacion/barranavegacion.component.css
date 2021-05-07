@@ -1,3 +1,7 @@
 .barraNavegacion{
   background-color: #32CD32;
 }
+
+a{
+  cursor: pointer;
+}
