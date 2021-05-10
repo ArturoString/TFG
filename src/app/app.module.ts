@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BarranavegacionComponent } from './barranavegacion/barranavegacion.component';
 import { RegistroComponent } from './registro/registro.component';
 import {environment} from '../environments/environment';
+import { CeldasDeArticulosComponent } from './celdas-de-articulos/celdas-de-articulos.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {environment} from '../environments/environment';
     LoginComponent,
     FooterComponent,
     BarranavegacionComponent,
-    RegistroComponent
+    RegistroComponent,
+    CeldasDeArticulosComponent
   ],
   imports: [
     BrowserModule,
