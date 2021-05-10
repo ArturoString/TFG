@@ -1,14 +1,26 @@
 class Planta {
+  private id: number;
   private nombre: string;
   private descripcion: string;
   private precio: number;
   private stock: number;
+  private tipo: string;
 
-  constructor(nombre: string, descripcion: string, precio: number, stock: number) {
+  constructor(id: number, nombre: string, descripcion: string, precio: number, stock: number, tipo: string) {
+    this.id = id;
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.precio = precio;
     this.stock = stock;
+    this.tipo = tipo;
+  }
+
+  get getId(): number {
+    return this.id;
+  }
+
+  set setId(value: number) {
+    this.id = value;
   }
 
   get getNombre(): string {
@@ -41,5 +53,12 @@ class Planta {
 
   set setStock(value: number) {
     this.stock = value;
+  }
+  get getTipo(): string {
+    return this.tipo;
+  }
+
+  set setTipo(value: string) {
+    this.tipo = value;
   }
 }

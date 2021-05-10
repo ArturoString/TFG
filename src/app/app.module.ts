@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire'; // Firebase config
 import { AngularFirestoreModule } from '@angular/fire/firestore'; // For Cloud Firestore
 
+/*Componentes*/
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';

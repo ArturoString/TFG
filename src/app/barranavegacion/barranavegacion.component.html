@@ -34,11 +34,33 @@
     </ul>
     <ul class="navbar-nav my-2 my-lg-0">
       <li class="active">
-        <a class="nav-link" (click)="clickAddTodo()" data-toggle="modal">Inicio sesión</a>
+        <a class="nav-link" data-toggle="modal" data-target="#modal1">Inicio sesión</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Regístrate</a>
+        <a class="nav-link" data-toggle="modal" data-target="#modal2">Regístrate</a>
       </li>
     </ul>
   </div>
 </nav>
+
+<div class="modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Login</h2>
+      </div>
+      <app-login></app-login>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Registro</h2>
+      </div>
+      <app-registro></app-registro>
+    </div>
+  </div>
+</div>

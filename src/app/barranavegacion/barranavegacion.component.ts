@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-barranavegacion',
@@ -13,7 +12,4 @@ export class BarranavegacionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  clickAddTodo(): void{
-    alert('hola!');
-  }
 }
