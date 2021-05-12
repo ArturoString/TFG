@@ -2,6 +2,10 @@
   background-color: #32CD32;
 }
 
+.alineacionFormulario{
+  padding: 20px;
+}
+
 a{
   cursor: pointer;
 }

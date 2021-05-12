@@ -1,13 +1,15 @@
-<form class="carta">
+<form id="fromularioLogin" class="carta">
     <div class="form-group">
-      <label for="exampleInputEmail1">Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">Correo</small>
+      <label for="inputEmail1">Email</label>
+      <input type="email" [formControl]="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="errorMensaje1" class="form-text text-muted">{{mensajeErrorCorreo}}</small>
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Contraseña</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+      <label for="inputPassword1">Contraseña</label>
+      <input type="password" [formControl]="contra" minlength="6" class="form-control" id="inputPassword1" placeholder="Contraseña">
+      <small id="errorMensaje2" class="form-text text-danger">{{mensajeErrorContra}}</small>
     </div>
-    <button type="submit" class="btn btn-success">Acceder
-    </button>
+    <div class="form-group alineacionBoton">
+    <button type="submit" class="btn btn-success" (click)="inicioSesion($event)">Acceder</button>
+    </div>
 </form>

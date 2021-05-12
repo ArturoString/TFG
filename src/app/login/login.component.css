@@ -1,2 +1,4 @@
-.carta{
+.alineacionBoton{
+  display: flex;
+  justify-content: center;
 }

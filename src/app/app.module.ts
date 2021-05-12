@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AngularFireModule } from '@angular/fire'; // Firebase config
 import { AngularFirestoreModule } from '@angular/fire/firestore'; // For Cloud Firestore
+import { ReactiveFormsModule } from '@angular/forms';
 
 /*Componentes*/
 import { AppComponent } from './app.component';
@@ -26,8 +27,10 @@ import { CeldasDeArticulosComponent } from './celdas-de-articulos/celdas-de-arti
   ],
   imports: [
     BrowserModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), // Import firebase
     AngularFirestoreModule, // Import firestore
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
