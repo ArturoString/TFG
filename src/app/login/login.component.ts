@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import firebase from 'firebase';
 import {environment} from '../../environments/environment';
+import * as $ from 'jquery';
 
 
 @Component({
@@ -42,11 +43,8 @@ export class LoginComponent implements OnInit {
 
       auth.createUserWithEmailAndPassword(this.email.value, this.contra.value)
         .then(userCredential => {
-          // Reseteo el valor del formulario una vez me devuelva las User Credentials porque eso es que todo fue bien en la insercion
           this.email.setValue('');
           this.contra.setValue('');
-          // Tras el reseteo de los campos  cerraremos el modal
-          // $('#myModal').modal('hide');
           console.log('Registrado');
         });
     }
