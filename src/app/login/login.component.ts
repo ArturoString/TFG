@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     }
     // Esto significa que no tiene ningun error
     if ((this.mensajeErrorCorreo.toString().length === 0) && (this.mensajeErrorContra.toString().length === 0))
-    {
+    {/*
       // firebase
       firebase.initializeApp(environment.firebaseConfig);
       const auth = firebase.auth();
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           this.email.setValue('');
           this.contra.setValue('');
           console.log('Registrado');
-        });
+        });*/
     }
   }
 }
