@@ -9,19 +9,19 @@ export class FirestoreService {
     private firestore: AngularFirestore
   ) {}
   // Crea un nuevo gato
-  public createCat(data: {nombre: string, url: string}) {
+  public createPlantas(data: {nombre: string, url: string}) {
     return this.firestore.collection('plantas').add(data);
   }
   // Obtiene un gato
-  public getCat(documentId: string) {
+  public getPlanta(documentId: string) {
     return this.firestore.collection('plantas').doc(documentId).snapshotChanges();
   }
   // Obtiene todos los gatos
-  public getCats() {
+  public getPlantas() {
     return this.firestore.collection('plantas').snapshotChanges();
   }
   // Actualiza un gato
-  public updateCat(documentId: string, data: any) {
+  public updatePlantas(documentId: string, data: any) {
     return this.firestore.collection('plantas').doc(documentId).set(data);
   }
 }

@@ -9,6 +9,7 @@ body {
   margin-top:10px;
   margin-bottom:10px;
   background-color:#FFF;
+  font-family: "Yu Gothic";
 }
 
 .card:hover {
@@ -26,4 +27,14 @@ body {
 }
 .card img{
   width:100%;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  font-family: arial;
+  text-decoration: none;
+}
+p{
+  margin-bottom: 0rem;
 }

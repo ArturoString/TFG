@@ -8,7 +8,8 @@ import {environment} from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
-// Servicios
+// routing
+import { Routes, RouterModule } from '@angular/router';
 
 /*Componentes*/
 import { AppComponent } from './app.component';
@@ -17,6 +18,12 @@ import { FooterComponent } from './footer/footer.component';
 import { BarranavegacionComponent } from './barranavegacion/barranavegacion.component';
 import { RegistroComponent } from './registro/registro.component';
 import { PlantasComponent } from './plantas/plantas.component';
+import { VistaProductoComponent } from './vista-producto/vista-producto.component';
+
+const appRoutes: Routes = [
+  { path: '', component: PlantasComponent},
+  { path: 'producto/:idproducto', component: VistaProductoComponent},
+];
 
 @NgModule({
   declarations: [
@@ -26,12 +33,14 @@ import { PlantasComponent } from './plantas/plantas.component';
     BarranavegacionComponent,
     RegistroComponent,
     PlantasComponent,
+    VistaProductoComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
   ],
