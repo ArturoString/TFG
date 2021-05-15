@@ -1,4 +1,14 @@
-class Planta {
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule
+  ]
+})
+export class PlantaModule {
   private id: number;
   private nombre: string;
   private descripcion: string;

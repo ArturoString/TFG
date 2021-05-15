@@ -1,5 +1,15 @@
-class Usuario {
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
+
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule
+  ]
+})
+export class UsuarioModule {
   private correo: string;
   private usuario: string;
   private password: string;
