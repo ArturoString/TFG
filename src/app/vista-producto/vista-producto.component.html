@@ -7,7 +7,17 @@
       <h2>{{this.nombre}}</h2>
       <p class="text-muted">Nºref: {{this.plantaObj.id}}</p>
       <p><b>Que es:</b><br>{{this.descripcion}}</p>
-      <p style="padding-bottom:50px;"><b>Stock</b>: {{this.stock}}</p>
+      <p style="padding-bottom:25px;"><b>Stock</b>: {{this.stock}}</p>
+
+      <div class="product-count" style="padding-bottom:25px;">
+        <p><b>Cantidad:</b></p>
+        <form action="#" class="display-flex">
+          <div class="qtyminus" (click)="disminuirContador()">-</div>
+          <input type="number" name="quantity" class="qty" [formControl]="inputCantidad">
+          <div class="qtyplus" (click)="aumentarContador()">+</div>
+        </form>
+      </div>
+
       <p><b>Envio:</b></p>
       <div class="grid">
         <div class="icon divicon"><i class="fa fa-2x fa-truck"></i></div>

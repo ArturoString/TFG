@@ -11,6 +11,8 @@ import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModul
   styleUrls: ['./vista-producto.component.css']
 })
 export class VistaProductoComponent implements OnInit {
+  // formulario + y -
+  inputCantidad = new FormControl(1);
   // objetos para la bd
   lista: Observable<any>;
   plantaObj: PlantaModule;
@@ -38,7 +40,21 @@ export class VistaProductoComponent implements OnInit {
       this.tipo = planta.payload.data()['tipo'];
       editSubscribe.unsubscribe();
     });
-    // relleno campos
-    // this.plantaObj.url = this.newCatForm.controls['url'].value;
   }
+  aumentarContador(): void{
+    if ((this.inputCantidad.value > 0) && (this.inputCantidad.value < this.stock)){
+      this.inputCantidad.setValue(this.inputCantidad.value + 1);
+    }else {
+      this.inputCantidad.setValue(1);
+    }
+  }
+  disminuirContador(): void{
+    if ((this.inputCantidad.value > 0) && (this.inputCantidad.value < this.stock)){
+      if (this.inputCantidad.value !== 1){
+        this.inputCantidad.setValue(this.inputCantidad.value - 1);
+      } else {
+        this.inputCantidad.setValue(1);
+      }
+  }
+}
 }

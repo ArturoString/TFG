@@ -1,7 +1,32 @@
 .divicon{
   margin-left: 10px;
 }
-
+/*boton cantidad*/
+.qtyminus, .qtyplus{
+  width: 34px;
+  height: 34px;
+  background: #212529;
+  text-align: center;
+  font-size: 19px;
+  line-height: 36px;
+  color: #fff;
+  cursor: pointer;
+}
+.display-flex {
+  display: flex;
+  margin-left: 10px;
+}
+.qty {
+  width: 60px;
+  text-align: center;
+}
+.qtyplus {
+  border-radius: 0 3px 3px 0;
+}
+.qtyminus {
+  border-radius: 3px 0 0 3px;
+}
+/*Carta producto*/
 * {
   box-sizing: border-box;
 }
