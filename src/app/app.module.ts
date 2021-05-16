@@ -5,8 +5,7 @@ import { AngularFireModule } from '@angular/fire';
 import {environment} from '../environments/environment';
 
 // Formulario
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 // routing
 import { Routes, RouterModule } from '@angular/router';
@@ -19,6 +18,7 @@ import { BarranavegacionComponent } from './barranavegacion/barranavegacion.comp
 import { RegistroComponent } from './registro/registro.component';
 import { PlantasComponent } from './plantas/plantas.component';
 import { VistaProductoComponent } from './vista-producto/vista-producto.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: PlantasComponent},
@@ -40,6 +40,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [

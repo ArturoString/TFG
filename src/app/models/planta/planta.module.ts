@@ -9,27 +9,19 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class PlantaModule {
-  private id: number;
-  private nombre: string;
-  private descripcion: string;
-  private precio: number;
-  private stock: number;
-  private tipo: string;
+   id: string;
+   nombre: string;
+   descripcion: string;
+   precio: number;
+   stock: number;
+   tipo: string;
+   url: string;
 
-  constructor(id: number, nombre: string, descripcion: string, precio: number, stock: number, tipo: string) {
-    this.id = id;
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.precio = precio;
-    this.stock = stock;
-    this.tipo = tipo;
-  }
-
-  get getId(): number {
+  get getId(): string {
     return this.id;
   }
 
-  set setId(value: number) {
+  set setId(value: string) {
     this.id = value;
   }
 
@@ -70,5 +62,12 @@ export class PlantaModule {
 
   set setTipo(value: string) {
     this.tipo = value;
+  }
+  get getUrl(): string {
+    return this.url;
+  }
+
+  set setUrl(value: string) {
+    this.url = value;
   }
 }

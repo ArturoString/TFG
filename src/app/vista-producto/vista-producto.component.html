@@ -1,1 +1,33 @@
-<p>vista-producto works!</p>
+<div class="main">
+  <div class="row">
+    <div class="column">
+      <div id="img-holder" style="background-image: url('{{this.url}}')"></div>
+    </div>
+    <div class="column">
+      <h2>{{this.nombre}}</h2>
+      <p class="text-muted">Nºref: {{this.plantaObj.id}}</p>
+      <p><b>Que es:</b><br>{{this.descripcion}}</p>
+      <p style="padding-bottom:50px;"><b>Stock</b>: {{this.stock}}</p>
+      <p><b>Envio:</b></p>
+      <div class="grid">
+        <div class="icon divicon"><i class="fa fa-2x fa-truck"></i></div>
+        <div>
+          <p><b>Fast Shipping</b><br>
+            Nos aseguramos de que reciba su paquete tan pronto como hayamos terminado.
+            También ofrecemos devoluciones gratuitas si no está satisfecho.
+          </p>
+        </div>
+        <div class="icon divicon"><i class="fa fa-2x fa-battery-full"></i></div>
+        <div>
+          <p><b>Quality Assurance</b><br>
+            Por cada compra que realice, nos aseguraremos de que no haya daños o
+            fallos en el paquete.
+          </p>
+        </div>
+      <br><br><br>
+
+      <button class="price-button">Añadir al carrito-{{this.precio}}€</button>
+    </div>
+  </div>
+</div>
+</div>

@@ -15,6 +15,7 @@ export class FirestoreService {
   // Obtiene un gato
   public getPlanta(documentId: string) {
     return this.firestore.collection('plantas').doc(documentId).snapshotChanges();
+    // return this.firestore.collection('plantas').doc(documentId);
   }
   // Obtiene todos los gatos
   public getPlantas() {
