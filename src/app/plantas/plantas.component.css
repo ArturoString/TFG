@@ -38,3 +38,8 @@ a{
 p{
   margin-bottom: 0rem;
 }
+
+.alineacionBoton{
+  display: flex;
+  justify-content: center;
+}

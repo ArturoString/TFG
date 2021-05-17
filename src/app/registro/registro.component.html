@@ -1,18 +1,15 @@
-<form>
-  <div class="form-group">
+<form (ngSubmit)="nuevoUsuario(usuarioFromGroup.value)" [formGroup]="usuarioFromGroup">
+
     <label for="nombreyApellidos">Nombre completo</label>
-    <input type="text" class="form-control" id="nombreyApellidos" placeholder="Nombre y apellidos">
-  </div>
-  <div class="form-group">
+    <input type="text" class="form-control" id="nombreyApellidos" formControlName="usuario" placeholder="Nombre y apellidos">
+
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">Correo</small>
-  </div>
-  <div class="form-group">
+    <input type="email" class="form-control" id="exampleInputEmail1" formControlName="correo" aria-describedby="emailHelp" placeholder="Enter email">
+
     <label for="exampleInputPassword1">Contraseña</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
-  </div>
-  <div class="form-group alineacionBoton">
+    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" placeholder="Contraseña">
+
+  <div class="alineacionBoton" style="margin-top: 15px">
     <button type="submit" class="btn btn-success">Submit</button>
   </div>
 </form>

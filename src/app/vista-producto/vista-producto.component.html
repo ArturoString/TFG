@@ -4,7 +4,7 @@
       <div id="img-holder" style="background-image: url('{{this.url}}')"></div>
     </div>
     <div class="column">
-      <h2>{{this.nombre}}</h2>
+      <h2>{{this.nombre}} ({{this.precio}}€)</h2>
       <p class="text-muted">Nºref: {{this.plantaObj.id}}</p>
       <p><b>Que es:</b><br>{{this.descripcion}}</p>
       <p style="padding-bottom:25px;"><b>Stock</b>: {{this.stock}}</p>
@@ -36,7 +36,7 @@
         </div>
       <br><br><br>
 
-      <button class="price-button">Añadir al carrito-{{this.precio}}€</button>
+      <button class="price-button">Añadir al carrito-{{this.precioTotal}}€</button>
     </div>
   </div>
 </div>

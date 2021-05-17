@@ -13,6 +13,7 @@ import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModul
 export class VistaProductoComponent implements OnInit {
   // formulario + y -
   inputCantidad = new FormControl(1);
+  precioTotal: string;
   // objetos para la bd
   lista: Observable<any>;
   plantaObj: PlantaModule;
@@ -25,6 +26,7 @@ export class VistaProductoComponent implements OnInit {
   public url: string;
   constructor(private rutaActiva: ActivatedRoute, private firestoreService: FirestoreService) {
     this.plantaObj = new PlantaModule();
+    this.precioTotal = '0';
   }
 
   ngOnInit(): void {
@@ -38,8 +40,12 @@ export class VistaProductoComponent implements OnInit {
       this.precio = planta.payload.data()['precio'];
       this.stock = planta.payload.data()['stock'];
       this.tipo = planta.payload.data()['tipo'];
+
+      this.precioTotal = planta.payload.data()['precio'];
       editSubscribe.unsubscribe();
     });
+    // por defecto es la cantidad 1
+    // this.precioTotal = String(this.precio);
   }
   aumentarContador(): void{
     if ((this.inputCantidad.value > 0) && (this.inputCantidad.value < this.stock)){
@@ -47,6 +53,8 @@ export class VistaProductoComponent implements OnInit {
     }else {
       this.inputCantidad.setValue(1);
     }
+    // Aumento la cantidad entonces cabio la variable precio total
+    this.precioTotal = String(this.precio * this.inputCantidad.value);
   }
   disminuirContador(): void{
     if ((this.inputCantidad.value > 0) && (this.inputCantidad.value < this.stock)){
@@ -55,6 +63,8 @@ export class VistaProductoComponent implements OnInit {
       } else {
         this.inputCantidad.setValue(1);
       }
+      // Aumento la cantidad entonces cabio la variable precio total
+      this.precioTotal = String(this.precio * this.inputCantidad.value);
   }
 }
 }
