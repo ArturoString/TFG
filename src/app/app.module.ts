@@ -18,10 +18,12 @@ import { BarranavegacionComponent } from './barranavegacion/barranavegacion.comp
 import { RegistroComponent } from './registro/registro.component';
 import { PlantasComponent } from './plantas/plantas.component';
 import { VistaProductoComponent } from './vista-producto/vista-producto.component';
+import { VistaInicioComponent } from './vista-inicio/vista-inicio.component';
 
 
 const appRoutes: Routes = [
-  { path: '', component: PlantasComponent},
+  { path: '', component: VistaInicioComponent},
+  { path: 'tienda', component: PlantasComponent},
   { path: 'producto/:idproducto', component: VistaProductoComponent},
 ];
 
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
     RegistroComponent,
     PlantasComponent,
     VistaProductoComponent,
+    VistaInicioComponent,
   ],
   imports: [
     BrowserModule,
