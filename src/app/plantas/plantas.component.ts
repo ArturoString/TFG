@@ -15,24 +15,12 @@ export class PlantasComponent implements OnInit {
   ngOnInit(): void{
     this.firestoreService.getPlantas().subscribe((plantasSnapshot) => {
       this.plantas = [];
-      plantasSnapshot.forEach((catData: any) => {
+      plantasSnapshot.forEach((plantaData: any) => {
         this.plantas.push({
-          id: catData.payload.doc.id,
-          data: catData.payload.doc.data()
+          id: plantaData.payload.doc.id,
+          data: plantaData.payload.doc.data()
         });
       });
     });
-  }/*
-  public editCat(documentId) {
-    let editSubscribe = this.firestoreService.getCat(documentId).subscribe((cat) => {
-      this.currentStatus = 2;
-      this.documentId = documentId;
-      this.newCatForm.setValue({
-        id: documentId,
-        nombre: cat.payload.data()['nombre'],
-        url: cat.payload.data()['url']
-      });
-      editSubscribe.unsubscribe();
-    });
-  }*/
+  }
 }

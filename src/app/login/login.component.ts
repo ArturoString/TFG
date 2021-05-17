@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import firebase from 'firebase';
-import {environment} from '../../environments/environment';
-import * as $ from 'jquery';
+import {FirestoreService} from '../services/firestore/firestore.service';
 
 
 @Component({
@@ -15,10 +13,17 @@ export class LoginComponent implements OnInit {
   contra = new FormControl('');
   mensajeErrorCorreo = '';
   mensajeErrorContra = '';
-  constructor() {}
+  public usuarios = [];
+  public resEmail: string;
+  public resPass: string;
+  constructor(
+    private firestoreService: FirestoreService
+  ) {}
 
   ngOnInit(): void {
     this.mensajeErrorCorreo = '';
+    this.resEmail = '';
+    this.resPass = '';
   }
 
   inicioSesion(e): void {
@@ -36,17 +41,22 @@ export class LoginComponent implements OnInit {
     }
     // Esto significa que no tiene ningun error
     if ((this.mensajeErrorCorreo.toString().length === 0) && (this.mensajeErrorContra.toString().length === 0))
-    {/*
-      // firebase
-      firebase.initializeApp(environment.firebaseConfig);
-      const auth = firebase.auth();
-
-      auth.createUserWithEmailAndPassword(this.email.value, this.contra.value)
-        .then(userCredential => {
-          this.email.setValue('');
-          this.contra.setValue('');
-          console.log('Registrado');
-        });*/
+    {
+      this.resEmail = '';
+      this.resPass = '';
+      this.firestoreService.getUsuarios().subscribe((usuariosSnapshot) => {
+        usuariosSnapshot.forEach((usuarioData: any) => {
+            this.resEmail = usuarioData.payload.doc.data()['correo'];
+            if (this.resEmail == this.email.value){
+              this.resPass = usuarioData.payload.doc.data()['password'];
+              if (this.resPass == this.contra.value){
+                console.log('Login correcto');
+              }else{
+                console.log('El correo existe pero no con esa contraseña');
+              }
+            }
+        });
+      });
     }
   }
 }
