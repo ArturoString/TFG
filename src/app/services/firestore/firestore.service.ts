@@ -9,7 +9,7 @@ export class FirestoreService {
   ) {}
   // PLANTAS
   // Crea una nuevo Planta
-  public createPlantas(data: {nombre: string, url: string}) {
+  public createPlantas(data: {descripcion: string, nombre: string, precio: number, stock: number, tipo: string, url: string}) {
     return this.firestore.collection('plantas').add(data);
   }
   // Obtiene una Planta
