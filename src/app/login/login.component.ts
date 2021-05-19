@@ -51,6 +51,9 @@ export class LoginComponent implements OnInit {
               this.resPass = usuarioData.payload.doc.data()['password'];
               if (this.resPass == this.contra.value){
                 console.log('Login correcto');
+                // Almaceno en en una variable global
+                localStorage.setItem('usuario', usuarioData.payload.doc.data()['usuario']);
+                localStorage.setItem('email', this.resEmail);
               }else{
                 console.log('El correo existe pero no con esa contraseña');
               }
