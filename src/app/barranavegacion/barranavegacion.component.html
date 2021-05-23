@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light barraNavegacion">
-  <a class="navbar-brand" href="#">Herbia</a>
+  <a class="navbar-brand" href="/">Herbia</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -23,35 +23,76 @@
         </div>
       </li>
     </ul>
-    <ul class="navbar-nav my-2 my-lg-0">
+    <ul *ngIf="registrado == true" class="navbar-nav my-lg-0">
+      <li class="nav-item dropleft">
+        <a type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Hola
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Cesta</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="cerrarSesion()">Cerrar Sesión</a>
+        </div>
+      </li>
+    </ul>
+    <ul *ngIf="registrado == false" class="navbar-nav my-2 my-lg-0">
       <li class="active">
-        <a class="nav-link" data-toggle="modal" data-target="#modal1">Inicio sesión</a>
+        <a class="nav-link" (click)="open(modal1)">Inicio sesión</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" data-toggle="modal" data-target="#modal2">Regístrate</a>
+        <a class="nav-link" (click)="open(modal2)">Regístrate</a>
       </li>
     </ul>
   </div>
 </nav>
 
-<div class="modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Login</h2>
-      </div>
-      <app-login class="alineacionFormulario"></app-login>
-    </div>
+<ng-template #modal1 let-modal>
+  <div class="modal-header">
+    <h2>Login</h2>
   </div>
-</div>
+  <div class="modal-body">
+    <form id="fromularioLogin" class="carta alineacionFormulario">
+      <div class="form-group">
+        <label for="inputEmail1">Email</label>
+        <input type="email" [formControl]="lEmail" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      </div>
 
-<div class="modal" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Registro</h2>
+      <div class="form-group">
+        <label for="inputPassword1">Contraseña</label>
+        <input type="password" [formControl]="lContra" minlength="6" class="form-control" id="inputPassword1" placeholder="Contraseña">
       </div>
-      <app-registro class="alineacionFormulario"></app-registro>
-    </div>
+      <div *ngIf="lEmail.value.toString().length>0 && lContra.value.toString().length >= 6" class="form-group alineacionBoton">
+        <button type="button" class="btn btn-success" (click)=" inicioSesion(); modal.close('Save click')">Iniciar sesión</button>
+      </div>
+    </form>
   </div>
-</div>
+</ng-template>
+
+<ng-template #modal2 let-modal22>
+      <div class="modal-header">
+        <h2>Registro Usuario</h2>
+      </div>
+      <div class="modal-body">
+        <form id="fromularioRegistro" class="carta alineacionFormulario">
+          <div class="form-group">
+          <label for="nombreyApellidos" size="20">Nombre completo</label><br>
+          <input type="text"  [formControl]="rUsuario" class="form-control" id="nombreyApellidos" placeholder="Nombre y apellidos">
+          </div>
+
+          <div class="form-group">
+          <label for="exampleInputEmail1" size="20">Email</label><br>
+          <input type="email" [formControl]="rEmail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+
+          <div class="form-group">
+          <label for="exampleInputPassword1">Contraseña</label><br>
+          <input type="password" [formControl]="rContra" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+          <a *ngIf="rContra.value.toString().length<6" class="text-muted">La contraseña tiene que contener al menos 6 caracteres</a>
+          </div>
+
+          <div *ngIf="rUsuario.value.toString().length>2 && rEmail.value.toString().length>0 && rContra.value.toString().length>=6" class="form-group alineacionBoton" style="margin-top: 15px">
+            <button type="submit" class="btn btn-success" (click)="nuevoUsuario(); modal22.close('Save click')">Registrar</button>
+          </div>
+        </form>
+      </div>
+</ng-template>

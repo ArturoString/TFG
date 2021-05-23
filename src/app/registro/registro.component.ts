@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import firebase from 'firebase';
-import {environment} from '../../environments/environment';
 import {FirestoreService} from '../services/firestore/firestore.service';
+import CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-registro',
@@ -10,13 +9,13 @@ import {FirestoreService} from '../services/firestore/firestore.service';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
-  public usuarioFromGroup = new FormGroup({
+  public registroFromGroup = new FormGroup({
     correo: new FormControl(''),
     password: new FormControl(''),
     usuario: new FormControl(''),
   });
   constructor(private firestoreService: FirestoreService) {
-    this.usuarioFromGroup.setValue({
+    this.registroFromGroup.setValue({
       correo: '',
       password: '',
       usuario: ''
@@ -34,12 +33,12 @@ export class RegistroComponent implements OnInit {
   public nuevoUsuario(form) {
     const data = {
       correo: form.correo,
-      password: form.password,
+      password: CryptoJS.SHA256(form.password.toString()).toString(), // encripto la password
       usuario: form.usuario
     };
     this.firestoreService.createUsuario(data).then(() => {
       console.log('Documento creado exitósamente!');
-      this.usuarioFromGroup.setValue({
+      this.registroFromGroup.setValue({
         correo: '',
         password: '',
         usuario: ''

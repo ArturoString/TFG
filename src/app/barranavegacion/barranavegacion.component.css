@@ -9,3 +9,8 @@
 a{
   cursor: pointer;
 }
+
+.alineacionBoton{
+  display: flex;
+  justify-content: center;
+}
