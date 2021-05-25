@@ -23,6 +23,7 @@ export class BarranavegacionComponent implements OnInit {
   rContra = new FormControl('');
   // Registrado
   registrado: boolean;
+  nombreUsuBarraDeNavegacion: string;
   // constructor
   constructor(private firestoreService: FirestoreService, private modalService: NgbModal) {
     if (localStorage.getItem('registrado') === 'false'){
@@ -48,16 +49,14 @@ export class BarranavegacionComponent implements OnInit {
             if (this.resPass == CryptoJS.SHA256(this.lContra.value).toString()){
               console.log('Login correcto');
               // Almaceno en en una variable global
+              localStorage.setItem('id', usuarioData.payload.doc.id.toString());
               localStorage.setItem('usuario', usuarioData.payload.doc.data()['usuario']);
               localStorage.setItem('email', this.resEmail);
-              alert('Login Correcto');
               // Muestro los botones
               this.inicioSesionElUsuario(true);
             }else{
-              console.log('El correo existe pero no con esa contraseña');
+              alert('Login incorrecto');
             }
-          }else{
-            alert('Login incorrecto');
           }
         });
       });
@@ -84,6 +83,7 @@ export class BarranavegacionComponent implements OnInit {
    this.registrado = logeado;
    if (this.registrado == true){
      localStorage.setItem('registrado', 'true');
+     this.nombreUsuBarraDeNavegacion = localStorage.getItem('usuario');
    }else{
      localStorage.setItem('registrado', 'false');
    }

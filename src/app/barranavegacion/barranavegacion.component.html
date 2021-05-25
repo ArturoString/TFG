@@ -26,12 +26,12 @@
     <ul *ngIf="registrado == true" class="navbar-nav my-lg-0">
       <li class="nav-item dropleft">
         <a type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Hola
+          {{nombreUsuBarraDeNavegacion}}
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Cesta</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-shopping-basket" style="margin-right: 5px"></i>Cesta</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="cerrarSesion()">Cerrar Sesión</a>
+          <a class="dropdown-item" (click)="cerrarSesion()"><i class="fas fa-sign-out-alt" style="margin-right: 5px"></i>Cerrar Sesión</a>
         </div>
       </li>
     </ul>
