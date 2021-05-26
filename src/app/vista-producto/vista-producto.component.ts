@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import {PlantaModule} from '../models/planta/planta.module';
 import {FirestoreService} from '../services/firestore/firestore.service';
 import {Observable} from 'rxjs';
-import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormControl} from '@angular/forms';
+import {CestaService} from '../services/cesta/cesta.service';
 
 @Component({
   selector: 'app-vista-producto',
@@ -24,7 +25,7 @@ export class VistaProductoComponent implements OnInit {
   public stock: number;
   public tipo: string;
   public url: string;
-  constructor(private rutaActiva: ActivatedRoute, private firestoreService: FirestoreService) {
+  constructor(private rutaActiva: ActivatedRoute, private firestoreService: FirestoreService, private cestaService: CestaService) {
     this.plantaObj = new PlantaModule();
     this.precioTotal = '0';
   }
@@ -65,6 +66,17 @@ export class VistaProductoComponent implements OnInit {
       }
       // Aumento la cantidad entonces cabio la variable precio total
       this.precioTotal = String(this.precio * this.inputCantidad.value);
+    }
   }
-}
+  addCarrito(): void {
+    if (localStorage.getItem('registrado') === 'false'){
+      alert('Inicie sesión primero');
+    }else {
+      this.cestaService.agregarObjetoCestaFirebase({
+        cantidad: this.inputCantidad.value,
+        idusuario: localStorage.getItem('id'),
+        idplanta: this.rutaActiva.snapshot.params.idproducto
+      });
+    }
+  }
 }

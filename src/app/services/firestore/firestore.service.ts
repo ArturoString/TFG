@@ -43,4 +43,21 @@ export class FirestoreService {
   public updateUsuarios(documentId: string, data: any) {
     return this.firestore.collection('usuarios').doc(documentId).set(data);
   }
+  // Cesta
+  // Crea un nuevo Usuario
+  public createObjetoCesta(data: {cantidad: number, idplanta: string, idusuario: string}) {
+    return this.firestore.collection('cesta').add(data);
+  }
+  // Obtiene un Usuario
+  public getObjetoCesta(documentId: string) {
+    return this.firestore.collection('cesta').doc(documentId).snapshotChanges();
+  }
+  // Obtiene todos los Usuarios
+  public getObjetosDeCesta() {
+    return this.firestore.collection('cesta').snapshotChanges();
+  }
+  // Actualiza un Usuario
+  public updateObjetoCesta(documentId: string, data: any) {
+    return this.firestore.collection('cesta').doc(documentId).set(data);
+  }
 }
