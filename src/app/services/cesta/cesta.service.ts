@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Cesta, CestaConDatosProducto} from '../../models/cesta';
+import {Cesta, Cesta2, CestaConDatosProducto} from '../../models/cesta';
 import {FirestoreService} from '../firestore/firestore.service';
 import {Plant} from '../../models/plant';
 
@@ -7,7 +7,7 @@ import {Plant} from '../../models/plant';
   providedIn: 'root'
 })
 export class CestaService {
-  private cestas: Cesta[];
+  private cestas: Cesta2[];
   private plantas: Plant[];
   private objetoCestaConDatosProducto: CestaConDatosProducto[];
   idusuarioFire: string;
@@ -18,9 +18,6 @@ export class CestaService {
     this.objetoCestaConDatosProducto = [];
   }
 
-  agregaraCesta(cesta: Cesta): void {
-    this.cestas.push(cesta);
-  }
   agregarObjetoCestaFirebase(cesta: Cesta): void{
     const data = {
       cantidad: cesta.cantidad,
@@ -40,6 +37,7 @@ export class CestaService {
         this.idusuarioFire = usuarioData.payload.doc.data()['idusuario'];
         if (this.idusuarioFire == idUsuario){
           this.cestas.push({
+            idObjeto: usuarioData.payload.doc.id,
             cantidad: usuarioData.payload.doc.data()['cantidad'],
             idplanta: usuarioData.payload.doc.data()['idplanta'],
             idusuario: usuarioData.payload.doc.data()['idusuario']
@@ -54,7 +52,7 @@ export class CestaService {
         this.plantas.push({
           id: plantaData.payload.doc.id,
           nombre: plantaData.payload.doc.data()['nombre'],
-          descripcion: plantaData.payload.doc.data()['descipcion'],
+          descripcion: plantaData.payload.doc.data()['descripcion'],
           precio: plantaData.payload.doc.data()['precio'],
           stock: plantaData.payload.doc.data()['stock'],
           tipo: plantaData.payload.doc.data()['tipo'],
@@ -66,6 +64,7 @@ export class CestaService {
         for (const planta of this.plantas) {
           if (articuloCesta.idplanta == planta.id){
             this.objetoCestaConDatosProducto.push({
+              idObjeto: articuloCesta.idObjeto,
               cantidad: articuloCesta.cantidad,
               idplanta: planta.id,
               nombre: planta.nombre,
@@ -79,5 +78,9 @@ export class CestaService {
     });
 
     return this.objetoCestaConDatosProducto;
-}
+  }
+
+  borarObjeto(idObjetoCesta: string): void{
+     this.firestoreService.deleteObjetoCesta(idObjetoCesta);
+  }
 }

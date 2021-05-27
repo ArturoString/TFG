@@ -10,11 +10,15 @@ import {CestaConDatosProducto} from '../models/cesta';
 export class VistaCestaComponent implements OnInit {
   public objetoCesta: CestaConDatosProducto[];
   constructor(private cestaService: CestaService) {
+    this.objetoCesta = [];
+  }
+
+  ngOnInit(): void {
     const idUsuario = localStorage.getItem('id');
     this.objetoCesta = this.cestaService.devolverObjetosCesta(idUsuario);
   }
 
-  ngOnInit(): void {
-  }
+  borrarObjetoCesta(idObjeto: string): void{
 
+  }
 }

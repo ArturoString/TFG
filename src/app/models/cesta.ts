@@ -3,8 +3,16 @@ export interface Cesta {
   idplanta: string;
   idusuario: string;
 }
+//
+export interface Cesta2 {
+  idObjeto: string;
+  cantidad: number;
+  idplanta: string;
+  idusuario: string;
+}
 
 export interface CestaConDatosProducto {
+  idObjeto: string;
   cantidad: number;
   idplanta: string;
   nombre: string;

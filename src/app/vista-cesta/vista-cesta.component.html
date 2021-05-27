@@ -1,17 +1,26 @@
-<p>vista-cesta works!</p>
+<h2>Total de productos en la cesta ({{objetoCesta.length}})</h2>
+<hr>
 <div class="container">
   <div class="row" *ngFor="let planta of objetoCesta">
-    <div class="cards col-lg-12 col-md-12">
-      <div class="card" style="width: 18rem;">
-        <a [routerLink]="['/producto',planta.idplanta]">
-          <img class="card-img-top" [src]="planta.url" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{planta.nombre}}</h5>
-            <p class="text-muted">Precio: {{planta.precio}}€</p>
+    <div class="card mb-3" style="max-width: 600px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <a [routerLink]="['/producto',planta.idplanta]" style="text-decoration: none;color: black;font-family: arial;text-decoration: none;">
+            <img [src]="planta.url" class="card-img" alt="Imagen de planta">
+            </a>
           </div>
-        </a>
-      </div>
+          <div class="col-md-6">
+            <div class="card-body">
+              <a [routerLink]="['/producto',planta.idplanta]" style="text-decoration: none;color: black;font-family: arial;text-decoration: none;">
+              <h5 class="card-title">{{planta.nombre}} (x{{planta.cantidad}})</h5>
+              <p class="card-text">{{planta.descripcion}}</p>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <h3 (click)="borrarObjetoCesta(planta.idObjeto)"><i class="far fa-trash-alt"></i></h3>
+          </div>
+        </div>
     </div>
   </div>
 </div>
-

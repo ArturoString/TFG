@@ -33,7 +33,6 @@ export class FirestoreService {
   // Obtiene un Usuario
   public getUsuario(documentId: string) {
     return this.firestore.collection('usuarios').doc(documentId).snapshotChanges();
-    // return this.firestore.collection('plantas').doc(documentId);
   }
   // Obtiene todos los Usuarios
   public getUsuarios() {
@@ -59,5 +58,9 @@ export class FirestoreService {
   // Actualiza un objetos de cesta
   public updateObjetoCesta(documentId: string, data: any) {
     return this.firestore.collection('cesta').doc(documentId).set(data);
+  }
+  // Borrar un documento de Cesta
+  public deleteObjetoCesta(idDocumento: string){
+    return this.firestore.collection('cesta').doc(idDocumento).delete();
   }
 }
