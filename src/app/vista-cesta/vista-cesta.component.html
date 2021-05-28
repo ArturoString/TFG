@@ -1,26 +1,48 @@
 <h2>Total de productos en la cesta ({{objetoCesta.length}})</h2>
 <hr>
-<div class="container">
-  <div class="row" *ngFor="let planta of objetoCesta">
-    <div class="card mb-3" style="max-width: 600px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <a [routerLink]="['/producto',planta.idplanta]" style="text-decoration: none;color: black;font-family: arial;text-decoration: none;">
-            <img [src]="planta.url" class="card-img" alt="Imagen de planta">
-            </a>
-          </div>
-          <div class="col-md-6">
-            <div class="card-body">
+<div style="display: flex; justify-content: space-around; margin-bottom: 50px">
+  <div>
+    <div *ngFor="let planta of objetoCesta">
+      <div class="card card" style="max-width: 600px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
               <a [routerLink]="['/producto',planta.idplanta]" style="text-decoration: none;color: black;font-family: arial;text-decoration: none;">
-              <h5 class="card-title">{{planta.nombre}} (x{{planta.cantidad}})</h5>
-              <p class="card-text">{{planta.descripcion}}</p>
+              <img [src]="planta.url" class="card-img" alt="Imagen de planta">
               </a>
             </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <a [routerLink]="['/producto',planta.idplanta]" style="text-decoration: none;color: black;font-family: arial;text-decoration: none;">
+                   <h5 class="card-title">{{planta.nombre}}</h5>
+                </a>
+                <p class="text-muted">Unidades: {{planta.cantidad}}</p>
+                <p class="text-muted">Total: {{planta.precio*planta.cantidad}}€</p>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" (click)="addPagoTotal(planta.precio , planta.cantidad, planta.idObjeto)">
+                  <label class="form-check-label">
+                    Añadir al pago
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button style="border-radius: 0px;border-style: none; background-color: white; width: 70px; height: 70px;" (click)="borrarObjetoCesta(planta.idObjeto); refrescar()"><i class="far fa-trash-alt fa-2x"></i></button>
+            </div>
           </div>
-          <div class="col-md-2">
-            <h3 (click)="borrarObjetoCesta(planta.idObjeto)"><i class="far fa-trash-alt"></i></h3>
-          </div>
-        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card cartaPago">
+      <div style="margin: 15px">
+        <h3 style="text-align: center">Pago</h3>
+        <hr>
+        <p>Precio: {{precioTotal}}€</p>
+        <p>Envio: 0€</p>
+        <hr>
+        <p>Total: {{precioTotal}}€</p>
+        <button class="btn btn-warning" style="margin: 3px; width: 260px;" (click)="pagarMetodo(); refrescar()">Pagar</button>
+      </div>
     </div>
   </div>
 </div>

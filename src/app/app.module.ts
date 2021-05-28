@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import CryptoJS from 'crypto-js';
 // firebase
 import { AngularFireModule } from '@angular/fire';
 import {environment} from '../environments/environment';
@@ -21,7 +22,7 @@ import { VistaInicioComponent } from './vista-inicio/vista-inicio.component';
 import { VistaCestaComponent } from './vista-cesta/vista-cesta.component';
 
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   { path: '', component: VistaInicioComponent},
   { path: 'tienda', component: PlantasComponent},
   { path: 'producto/:idproducto', component: VistaProductoComponent},
@@ -29,6 +30,9 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+  exports: [
+    RouterModule,
+  ],
   declarations: [
     AppComponent,
     FooterComponent,
@@ -46,6 +50,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'}),
   ],
   providers: [
   ],

@@ -20,3 +20,9 @@ export interface CestaConDatosProducto {
   url: string;
   precio: number;
 }
+
+export interface ObjetosAPagar{
+  idObjeto: string;
+  cantidad: number;
+  precio: number;
+}

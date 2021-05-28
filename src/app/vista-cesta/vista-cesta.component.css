@@ -11,7 +11,11 @@ a{
   color: black;
   text-decoration: none;
 }
-.card {
+a:hover {
+  color: black;
+  text-decoration:darkcyan;
+}
+.carta{
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.2s ease-in-out;
   box-sizing: border-box;
@@ -19,4 +23,11 @@ a{
   margin-bottom:10px;
   background-color:#FFF;
   font-family: "Yu Gothic";
+}
+.cartaPago{
+  width: 300px;
+  height: 300px;
+}
+.card{
+  margin-bottom: 10px;
 }
